@@ -1,0 +1,300 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "description": "This is a User-Role Management Service Powered By Kx Main",
+        "version": "1.0.6",
+        "title": "This is a User-Role Management Service",
+        "contact": {
+            "email": "developer.kx@bysqlgloabl.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "servers": [
+        {
+            "url": "/"
+        },
+        {
+            "url": "http://127.0.0.1:8000/api/v1"
+        }
+    ],
+    "paths": {
+        "/": {
+            "get": {
+                "summary": "Laravel Test API Information",
+                "description": "Laravel Test API Information",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    }
+                },
+                "tags": [
+                    "Default"
+                ]
+            }
+        },
+        "/admin/roles": {
+            "get": {
+                "summary": "role list",
+                "description": "role list",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    },
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "code",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json":{
+                                "example":{
+                                    "status_code": 200,
+                                    "message": "",
+                                    "data": [
+                                        {
+                                            "id": 1,
+                                            "code": "ROLE001",
+                                            "title": "Admin Role",
+                                            "description": "Admin Role",
+                                            "is_deletable": 1,
+                                            "status": 1,
+                                            "created_by": null,
+                                            "updated_by": null,
+                                            "created_at": "2022-10-10T07:16:39.000000Z",
+                                            "updated_at": "2022-10-10T07:16:39.000000Z"
+                                        },
+                                        {
+                                            "id": 2,
+                                            "code": "ROLE002",
+                                            "title": "Admin Role2",
+                                            "description": "Admin Role2",
+                                            "is_deletable": 1,
+                                            "status": 1,
+                                            "created_by": null,
+                                            "updated_by": null,
+                                            "created_at": "2022-10-10T07:16:53.000000Z",
+                                            "updated_at": "2022-10-10T07:16:53.000000Z"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Admin/Role"
+                ]
+            },
+            "post": {
+                "summary": "role create",
+                "description": "role create",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/roleCreate"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json":
+                            {
+                                "example": {
+                                    "status_code": 201,
+                                    "message": "successfully_created",
+                                    "data": {
+                                        "title": "Admin Role444",
+                                        "code": "ROLE004ww44",
+                                        "description": "Admin Role4",
+                                        "updated_at": "2022-10-10T07:22:24.000000Z",
+                                        "created_at": "2022-10-10T07:22:24.000000Z",
+                                        "id": 6
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Admin/Role"
+                ]
+            }
+        },
+        "/admin/roles/{roleId}": {
+            "get": {
+                "summary": "role update",
+                "description": "role update",
+                "parameters": [
+                    {
+                        "name": "roleId",
+                        "in": "path",
+                        "required": true,
+                        "description": "Role Id",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json":{
+                                "example":{
+                                    "status_code": 200,
+                                    "message": "",
+                                    "data": [
+                                        {
+                                            "id": 1,
+                                            "code": "ROLE001",
+                                            "title": "Admin Role",
+                                            "description": "Admin Role",
+                                            "is_deletable": 1,
+                                            "status": 1,
+                                            "created_by": null,
+                                            "updated_by": null,
+                                            "created_at": "2022-10-10T07:16:39.000000Z",
+                                            "updated_at": "2022-10-10T07:16:39.000000Z"
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Admin/Role"
+                ]
+            },
+            "put": {
+                "summary": "role update",
+                "description": "role update",
+                "parameters": [
+                    {
+                        "name": "roleId",
+                        "in": "path",
+                        "required": true,
+                        "description": "Role Id",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/roleCreate"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json":
+                            {
+                                "example": {
+                                    "status_code": 200,
+                                    "message": "successfully_Updated",
+                                    "data": {
+                                        "title": "Admin Role444",
+                                        "code": "ROLE004ww44",
+                                        "description": "Admin Role4",
+                                        "updated_at": "2022-10-10T07:22:24.000000Z",
+                                        "created_at": "2022-10-10T07:22:24.000000Z",
+                                        "id": 6
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "Admin/Role"
+                ]
+            },
+            "delete": {
+                "summary": "role delete",
+                "description": "role delete",
+                "parameters": [
+                    {
+                        "name": "roleId",
+                        "in": "path",
+                        "required": true,
+                        "description": "Role Id",
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok"
+                    }
+                },
+                "tags": [
+                    "Admin/Role"
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "roleCreate": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "string",
+                        "example": "ROLE001"
+                    },
+                    "title": {
+                        "type": "string",
+                        "example": "Admin Role"
+                    },
+                    "description": {
+                        "type": "string",
+                        "example": "Admin Role"
+                    }
+                }
+            }
+        }
+    }
+}
